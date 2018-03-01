@@ -1,0 +1,53 @@
+body{
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.app-contain1er{
+    background-color: blanchedalmond;
+    margin: auto 30px;
+    max-width: 850px;
+}
+
+.main-page-search-box{
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.search-box{
+    min-width: 300px; 
+    position: relative;
+}
+
+.search-wrap{
+    display:block;
+    width: 100%;
+}
+
+.search-wrap input{
+    width: 80%;
+}
+
+.search-wrap button{
+    width: 20%;
+}
+
+.search-suggestion-box{
+    position: absolute;
+    display:inline-block;
+    z-index: 9999;
+    max-height: 100px;
+    width: 100%;
+    overflow: auto;
+    border:true;
+    border: solid 1px #cccccc;
+}
+
+.search-suggestion-box-content{
+    width: 100%;
+}
+
+ul{
+    list-style: none;
+    padding:0;
+}
