@@ -6,7 +6,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="main-page-search-box">
-                <SearchBox/>
+                <SearchBox />
             </div>
         );
     }

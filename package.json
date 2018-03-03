@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --open",
     "build": "SET NODE_ENV='production'&& webpack -p",
     "deploy": "npm run build && firebase deploy",
-    "firebase-init": "firebase login && firebase init"
+    "firebase-init": "firebase login && firebase init",
+    "eslint-init": "eslint --init"
   },
   "babel": {
     "presets": [
@@ -32,11 +33,19 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.9",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "file-loader": "^1.1.11",
     "firebase-tools": "^3.17.4",
     "html-webpack-plugin": "^2.30.1",
     "style-loader": "^0.20.1",

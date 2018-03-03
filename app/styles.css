@@ -17,10 +17,6 @@ a:hover{
     text-decoration: none;
 }
 
-.app-container{
-
-}
-
 .main-page-search-box{
     width: 500px;
     margin-right: auto;
@@ -49,8 +45,7 @@ a:hover{
     position: absolute;
     display:inline-block;
     z-index: 9999;
-    max-height: 600px;
-    min-height: 67px;
+    max-height: 402px;
     width: 100%;
     overflow: auto;
     border:true;
@@ -76,6 +71,8 @@ a:hover{
 .suggested-movie-item img{
     align-self: center;
     margin-right: 10px;
+    width:40px;
+    height:60px;
 }
 
 .suggested-movie-item p{
