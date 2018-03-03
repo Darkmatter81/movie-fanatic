@@ -8,6 +8,15 @@ ul{
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 .app-container{
 
 }
@@ -57,6 +66,11 @@ ul{
     flex-direction: row;
     padding: 3px;
     border-bottom: solid 1px #cccccc;
+    cursor: pointer;
+}
+
+.suggested-movie-item:hover{
+    background-color: blanchedalmond;
 }
 
 .suggested-movie-item img{
@@ -67,3 +81,4 @@ ul{
 .suggested-movie-item p{
     margin: 2px;
 }
+

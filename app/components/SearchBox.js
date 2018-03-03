@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const SearchSuggestionBox = (props) => {
     const movies = ['Movie 1', 'Movie 2', 'Movie 3', 'Movie 4', 'Movie 5', 'Movie 6', 'Movie 7', 'Movie 8',]
@@ -10,14 +11,16 @@ const SearchSuggestionBox = (props) => {
                 <ul>
                     {movies.map((movie)=>{
                         return (
-                            <li key={movie}>
-                                <div className='suggested-movie-item'>
-                                    <img src='http://via.placeholder.com/40x60'/>
-                                    <div>
-                                        <p>Movie title (Year)</p>
-                                        <p>Actors starring</p>
+                           <li key={movie}>
+                                <Link to='/result'>
+                                    <div className='suggested-movie-item'>
+                                        <img src='http://via.placeholder.com/40x60'/>
+                                        <div>
+                                            <p>Movie title (Year)</p>
+                                            <p>Actors starring</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </li>  
                         )
                     })}
