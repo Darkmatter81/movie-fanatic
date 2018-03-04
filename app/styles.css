@@ -45,7 +45,7 @@ a:hover{
     position: absolute;
     display:inline-block;
     z-index: 9999;
-    max-height: 402px;
+    max-height: 550px;
     width: 100%;
     overflow: auto;
     border:true;

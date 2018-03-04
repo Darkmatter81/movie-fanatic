@@ -4,17 +4,19 @@ const movieSearchUrl = omdbApiRoot + '&type=movie&s=';
 
 function handlError(error){
     console.warn(error);
-    return null;
 }
 
 async function searchMovies(title){
-    const response = await fetch(window.encodeURI( movieSearchUrl + title ))
-        .catch(handlError);
-    
-    if (!response) return null;
-
-    const movies = await response.json();
-    return movies;
+    try{
+        const response = await fetch(window.encodeURI( movieSearchUrl + title ));
+        const movies = await response.json();
+        
+        return movies.Search ? movies.Search : [];
+    }
+    catch( error ){
+        handlError(error);
+        return [];
+    }
 }
 
 export default {

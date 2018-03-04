@@ -54,14 +54,12 @@ export default class SearchBox extends React.Component{
      */
     onMovieTitleChange = async (event)=>{
         const movieTitle = event.target.value;
-        let movies = [];
-
+        
         if (movieTitle.length > 1){
-            const result = await api.searchMovies(movieTitle);        
-            movies = (result && result.Search) ? result.Search : [];
+            let movies = await api.searchMovies(movieTitle);   
+            movies = movies.slice(0,8); 
+            this.setState(()=>({suggestedMovies:movies}));    
         }
-
-        this.setState(()=>({suggestedMovies:movies}));
     }
        
     async componentWillMount(){
