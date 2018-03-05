@@ -17,7 +17,7 @@ a:hover{
     text-decoration: none;
 }
 
-.main-page-search-box{
+.search-box-wrap{
     width: 500px;
     margin-right: auto;
     margin-left: auto;
@@ -60,6 +60,7 @@ a:hover{
 .see-all-results{
     padding: 5px;
     cursor: pointer;
+    background-color: #eeeeee;
 }
 
 
@@ -69,6 +70,7 @@ a:hover{
     padding: 3px;
     border-bottom: solid 1px #cccccc;
     cursor: pointer;
+    background-color: white;
 }
 
 .suggested-movie-item:hover,
