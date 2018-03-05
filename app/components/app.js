@@ -11,7 +11,8 @@ export default class App extends React.Component{
                     <div>
                         <Switch>
                             <Route exact path='/' component={Home}/>
-                            <Route path='/result' render={()=><h1>Movie Result</h1>}/>  
+                            <Route path='/movie' render={()=><h2>Movie result</h2>}/>
+                            <Route path='/results' render={()=><h2>Movie List Result</h2>}/>  
                             <Route render={()=><h2>Page not found</h2>}/>
                         </Switch>
                     </div>

@@ -6,32 +6,40 @@ import noPosterImg from './../filmstrip-icon.png';
 
 class SearchSuggestionBox extends React.Component {
     static propTypes = {
-        suggestedMovies:PropTypes.array.isRequired
+        suggestedMovies:PropTypes.array.isRequired,
+        searchTitle:PropTypes.string.isRequired
     };
     
     render(){
-        const { suggestedMovies } = this.props; 
+        const { suggestedMovies, searchTitle } = this.props; 
               
         return(
             <div className='search-suggestion-box'>
                 <div className='search-suggestion-box-content'>
                     <ul>
-                        {suggestedMovies.map(( movie )=>{
+                        {suggestedMovies.map(( {imdbID, Title, Year, Poster}  )=>{
                             return (
-                                <li key={movie.imdbID}>
-                                    <Link to='/result'>
+                                <li key={ imdbID }>
+                                    <Link to={`/movie/${ imdbID }`}>
                                         <div className='suggested-movie-item'>
                                             <img src={
-                                                movie.Poster != 'N/A' ? movie.Poster : noPosterImg
+                                                Poster != 'N/A' ? Poster : noPosterImg
                                             }/>
                                             <div>
-                                                <p>{movie.Title} ({movie.Year})</p>
+                                                <p>{Title} ({Year})</p>
                                             </div>
                                         </div>
                                     </Link>
                                 </li>  
                             )
                         })}
+                        <li>
+                            <Link to='/results'>
+                                <div className = 'see-all-results'>
+                                    See all results for "<em>{ searchTitle}</em>"
+                                </div>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +49,9 @@ class SearchSuggestionBox extends React.Component {
 
 export default class SearchBox extends React.Component{
     state = {
-        suggestedMovies: [ ]
+        suggestedMovies: [],
+        searchTitle: '',
+        showSuggestions: false
     };
 
     onSearchMovie = (event)=>{
@@ -53,32 +63,44 @@ export default class SearchBox extends React.Component{
      * suggestion box
      */
     onMovieTitleChange = async (event)=>{
-        const movieTitle = event.target.value;
-        
-        if (movieTitle.length > 1){
-            let movies = await api.searchMovies(movieTitle);   
-            movies = movies.slice(0,8); 
-            this.setState(()=>({suggestedMovies:movies}));    
+        const movieTitle = event.target.value.trim();
+        let movies = [];
+
+        this.setState(()=>({searchTitle: movieTitle}));
+
+        if (movieTitle.length > 2){
+            movies = await api.searchMovies(movieTitle);   
+            movies = movies.slice(0,6); 
         }
+
+        this.setState(()=>({
+                suggestedMovies:movies,
+                showSuggestions: movies.length > 0 
+           }
+        ));    
     }
        
-    async componentWillMount(){
+    componentWillMount(){
         document.addEventListener('mousedown', this.handleMouseDown);
-
     }
 
     sscomponentWillUnmount (){
         document.removeEventListener('mousedown', this.handleMouseDown);
     }
 
+    /**
+     * Hide suggestion box if user clicks outside of search/search suggestions
+     * Show if clicked within and there are suggestions to show
+     */
     handleMouseDown = (event) => {
-        if (!this.searchBox.contains(event.target)){
-            this.closeSuggestionBox();
-        }
+        const show = this.searchBox.contains(event.target) &&
+                     this.state.suggestedMovies.length > 0;
+
+        this.showSuggestionBox( show );
     }   
 
-    closeSuggestionBox = () =>{
-        this.setState(()=>({suggestedMovies: []}));
+    showSuggestionBox = (show) =>{
+        this.setState(()=>({showSuggestions: show}));
     }
 
     render(){
@@ -87,13 +109,17 @@ export default class SearchBox extends React.Component{
                  ref={(node)=>{this.searchBox = node}}>
                 <div className="search-wrap">
                     <form onSubmit={this.onSearchMovie}>
-                        <input autoFocus onChange={this.onMovieTitleChange}/>
+                        <input onChange={this.onMovieTitleChange}
+                               value={this.state.movieTitle} 
+                               placeholder='Search movies, TV shows' 
+                               autoFocus/>
                         <button>Search</button>
                     </form>
                 </div>
 
-                {this.state.suggestedMovies.length != 0 &&              
-                    <SearchSuggestionBox suggestedMovies={this.state.suggestedMovies}/>
+                {this.state.showSuggestions &&              
+                    <SearchSuggestionBox suggestedMovies={this.state.suggestedMovies}
+                                         searchTitle={this.state.searchTitle}/>
                 }
             </div>  
         );

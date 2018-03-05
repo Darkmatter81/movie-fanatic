@@ -45,16 +45,23 @@ a:hover{
     position: absolute;
     display:inline-block;
     z-index: 9999;
-    max-height: 550px;
     width: 100%;
     overflow: auto;
     border:true;
     border: solid 1px #cccccc;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .search-suggestion-box-content ul{
     margin: 0;    
 }
+
+.see-all-results{
+    padding: 5px;
+    cursor: pointer;
+}
+
 
 .suggested-movie-item{
     display: flex;
@@ -64,18 +71,20 @@ a:hover{
     cursor: pointer;
 }
 
-.suggested-movie-item:hover{
+.suggested-movie-item:hover,
+.see-all-results:hover{
     background-color: blanchedalmond;
 }
 
 .suggested-movie-item img{
     align-self: center;
     margin-right: 10px;
-    width:40px;
+    width:50px;
     height:60px;
 }
 
 .suggested-movie-item p{
     margin: 2px;
 }
+
 
