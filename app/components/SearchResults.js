@@ -8,16 +8,22 @@ class SearchResults extends React.Component {
         searchResults: [],
     };
 
-    componentWillReceiveProps(){
-        this.searchForMovies();
+    componentWillReceiveProps(nextProps){
+        // has there been a change?
+        const title = this.props.match.params.title;
+        const newTitle = nextProps.match.params.title;
+
+        if (title !== newTitle){
+            this.searchForMovies( newTitle );
+        }
     }
 
     componentWillMount(){
-        this.searchForMovies();
+        const { title } = this.props.match.params;
+        this.searchForMovies( title );
     }
 
-    async searchForMovies(){
-        const { title } = this.props.match.params;
+    async searchForMovies(title){
         const searchResults = await api.searchMovies(title);
         
         this.setState(()=> ( {searchResults}) );

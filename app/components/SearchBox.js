@@ -66,6 +66,7 @@ class SearchBox extends React.Component{
     }
 
     searchMovie = ()=>{
+        this.showSuggestionBox (false);
         this.props.history.push(`/search/${this.state.searchTitle}`);
     }
     
