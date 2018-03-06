@@ -2,6 +2,9 @@ body{
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+p{
+    margin: 0;
+}
 
 ul{
     list-style: none;
@@ -15,6 +18,11 @@ a {
 
 a:hover{
     text-decoration: none;
+}
+
+.app-container{
+    
+    min-width: 850px;
 }
 
 .search-box-wrap{
@@ -51,6 +59,7 @@ a:hover{
     border: solid 1px #cccccc;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search-suggestion-box-content ul{
@@ -89,4 +98,40 @@ a:hover{
     margin: 2px;
 }
 
+.results-container{
+    max-width: 640px;
+    min-height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    border: #dddddd 1px solid;
+    padding: 20px;
+    border-radius: 10px;
+}
 
+.results-table{
+    width:100%;
+    margin-top: 10px;
+}
+
+.results-table tr:nth-child(odd) {
+    background-color:#eeeeee;
+}
+
+.results-table tr{
+    height:60px;
+    padding: 15px;
+}
+
+.movie-result-item-poster{
+    width:60px;
+    padding-left: 5px;
+}
+
+.movie-result-item-poster img{
+    width:33px;
+    height:50px;
+}
+
+.movie-result-item-name p{
+    font-size: 14px;
+}

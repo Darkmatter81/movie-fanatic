@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import api from './../utils/api';
 import noPosterImg from './../filmstrip-icon.png';
+import { withRouter } from 'react-router-dom';
 
 class SearchSuggestionBox extends React.Component {
     static propTypes = {
@@ -21,7 +22,7 @@ class SearchSuggestionBox extends React.Component {
                         {suggestedMovies.map(( {imdbID, Title, Year, Poster}  )=>{
                             return (
                                 <li key={ imdbID }>
-                                    <div className='suggested-movie-item' onMouseUp={onClickSuggestion.bind(null, imdbID)}>                                       
+                                    <div className='suggested-movie-item' onMouseUp={()=>{onClickSuggestion(imdbID)}}>                                       
                                         <img src={
                                             Poster != 'N/A' ? Poster : noPosterImg
                                         }/>
@@ -44,7 +45,7 @@ class SearchSuggestionBox extends React.Component {
     }
 }
 
-export default class SearchBox extends React.Component{
+class SearchBox extends React.Component{
     state = {
         suggestedMovies: [],
         searchTitle: '',
@@ -55,7 +56,7 @@ export default class SearchBox extends React.Component{
         document.addEventListener('mousedown', this.handleMouseDown);
     }
 
-    sscomponentWillUnmount (){
+    componentWillUnmount (){
         document.removeEventListener('mousedown', this.handleMouseDown);
     }
 
@@ -65,9 +66,7 @@ export default class SearchBox extends React.Component{
     }
 
     searchMovie = ()=>{
-        console.log('Searching movie: ' + this.state.searchTitle);     
-
-        this.showSuggestionBox(false);
+        this.props.history.push(`/search/${this.state.searchTitle}`);
     }
     
     /**
@@ -144,3 +143,4 @@ export default class SearchBox extends React.Component{
     }
 }
 
+export default withRouter(SearchBox);

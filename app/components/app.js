@@ -10,18 +10,20 @@ export default class App extends React.Component{
             <div className='app-container'>
                 <h3 className='text-center'>Movie Fanatic</h3>
                
-
                 <BrowserRouter>
                     <div>
                         <div className="search-box-wrap">
                             <SearchBox />
                         </div>
-                        <Switch>
-                            <Route exact path='/' component={Home}/>
-                            <Route path='/movie' render={()=><h2>Movie result</h2>}/>
-                            <Route path='/search' component={SearchResults}/>  
-                            <Route render={()=><h2>Page not found</h2>}/>
-                        </Switch>
+                        
+                        <div style={{marginTop: 30}}>
+                            <Switch>
+                                <Route exact path='/' component={Home}/>
+                                <Route path='/movie' render={()=><h2>Movie result</h2>}/>
+                                <Route path='/search/:title' component={SearchResults}/>  
+                                <Route render={()=><h2>Page not found</h2>}/>
+                            </Switch>
+                        </div>
                     </div>
                 </BrowserRouter>
             </div>
