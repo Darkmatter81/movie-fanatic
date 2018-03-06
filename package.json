@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open",
-    "build": "SET NODE_ENV='production'&& webpack -p",
+    "build": "cross-env NODE_ENV='production' webpack -p",
     "deploy": "npm run build && firebase deploy",
     "firebase-init": "firebase login && firebase init",
     "eslint-init": "eslint --init"
@@ -38,6 +38,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.3",
     "css-loader": "^0.28.9",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
