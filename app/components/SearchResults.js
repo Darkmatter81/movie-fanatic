@@ -8,17 +8,13 @@ class SearchResults extends React.Component {
         searchResults: [],
     };
 
-    componentWillReceiveProps(nextProps){
-        // has there been a change?
-        const title = this.props.match.params.title;
-        const newTitle = nextProps.match.params.title;
-
-        if (title !== newTitle){
-            this.searchForMovies( newTitle );
+    componentDidUpdate(prevProps){
+        if (this.props.location.pathname !== prevProps.location.pathname){
+            this.searchForMovies (this.props.match.params.title);
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         const { title } = this.props.match.params;
         this.searchForMovies( title );
     }
