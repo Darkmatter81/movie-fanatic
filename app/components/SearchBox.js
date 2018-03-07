@@ -49,7 +49,7 @@ class SearchBox extends React.Component{
     state = {
         suggestedMovies: [],
         searchTitle: '',
-        showSuggestions: false
+        searchSubmitted: false
     };
     
     componentWillMount(){
@@ -66,6 +66,7 @@ class SearchBox extends React.Component{
     }
 
     searchMovie = ()=>{
+        this.setState(()=>({searchSubmitted : true}));
         this.showSuggestionBox (false);
         this.props.history.push(`/search/${this.state.searchTitle}`);
     }
@@ -78,18 +79,17 @@ class SearchBox extends React.Component{
         const movieTitle = event.target.value.trim();
         let movies = [];
 
-        this.setState(()=>({searchTitle: movieTitle}));
-
+        this.setState(()=>({ 
+            searchTitle: movieTitle, 
+            searchSubmitted: false
+        }));
+        
         if (movieTitle.length > 2){
             movies = await api.searchMovies(movieTitle);   
             movies = movies.slice(0,6); 
         }
-
-        this.setState(()=>({
-            suggestedMovies:movies,
-            showSuggestions: movies.length > 0 
-            }
-        ));    
+        
+        this.setState(()=>({ suggestedMovies:movies }));    
     }
           
     /**
@@ -106,7 +106,6 @@ class SearchBox extends React.Component{
     }   
 
     onClickSuggestion = (suggestedMovieID) => {
-        console.log('Suggested movie = ' + suggestedMovieID  );
         this.showSuggestionBox (false);
     }
 
@@ -115,6 +114,7 @@ class SearchBox extends React.Component{
     }
 
     render(){
+        const showSuggestions = this.state.suggestedMovies.length > 0  && !this.state.searchSubmitted;
         return(
             <div className="search-box"
                 ref={(node) =>{this.searchBox = node}}>
@@ -132,7 +132,7 @@ class SearchBox extends React.Component{
                     </form>
                 </div>
 
-                {this.state.showSuggestions &&              
+                {showSuggestions &&             
                     <SearchSuggestionBox suggestedMovies={this.state.suggestedMovies}
                                          searchTitle={this.state.searchTitle}
                                          onClickSuggestion={this.onClickSuggestion}
