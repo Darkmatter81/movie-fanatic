@@ -19,7 +19,7 @@ export default class App extends React.Component{
                         <div style={{marginTop: 30}}>
                             <Switch>
                                 <Route exact path='/' component={Home}/>
-                                <Route path='/movie' render={()=><h2>Movie result</h2>}/>
+                                <Route path='/title/:id' render={()=><h2>Movie result</h2>}/>
                                 <Route path='/search/:title' component={SearchResults}/>  
                                 <Route render={()=><h2>Page not found</h2>}/>
                             </Switch>

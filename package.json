@@ -1,5 +1,5 @@
 {
-  "name": "github-battle",
+  "name": "movie-fanatic",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -42,7 +42,7 @@
     "css-loader": "^0.28.9",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-babel": "^1.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",

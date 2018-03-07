@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBox from './SearchBox';
 import noPoster from './../filmstrip-icon.png';
 import api from './../utils/api';
+import { Link } from 'react-router-dom';
 
 class SearchResults extends React.Component {
     state = { 
@@ -20,6 +20,7 @@ class SearchResults extends React.Component {
     }
 
     async searchForMovies(title){
+        document.title = `Movie Fanatic - Search "${title}"` ;
         const searchResults = await api.searchMovies(title);
         
         this.setState(()=> ( {searchResults}) );
@@ -38,10 +39,14 @@ class SearchResults extends React.Component {
                             return(
                                 <tr key={imdbID}>
                                     <td className='movie-result-item-poster'>
-                                        <img src={Poster !== 'N/A' ? Poster : noPoster} />
+                                        <Link to={`/title/${Title}`}>
+                                            <img src={Poster !== 'N/A' ? Poster : noPoster} />
+                                        </Link>
                                     </td>
                                     <td className='movie-result-item-name'>
-                                        <p>{ Title } ({ Year })</p>
+                                        <p> 
+                                            <Link to={`/title/${imdbID}`}>{ Title }</Link> ({ Year })
+                                        </p>
                                     </td>
                                 </tr>
                             )

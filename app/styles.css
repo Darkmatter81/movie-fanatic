@@ -11,11 +11,6 @@ ul{
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
 a:hover{
     text-decoration: none;
 }
@@ -94,6 +89,11 @@ a:hover{
     height:60px;
 }
 
+.suggested-movie-item a {
+    text-decoration: none;
+    color: black;
+}
+
 .suggested-movie-item p{
     margin: 2px;
 }
@@ -134,4 +134,8 @@ a:hover{
 
 .movie-result-item-name p{
     font-size: 14px;
+}
+
+.movie-result-item-name a:hover{
+    color: darkblue;
 }

@@ -102,11 +102,13 @@ class SearchBox extends React.Component{
                      target !== this.searchButton &&
                      this.state.suggestedMovies.length > 0;
 
+        this.setState(()=>({searchSubmitted : !show}));
         this.showSuggestionBox( show );
     }   
 
     onClickSuggestion = (suggestedMovieID) => {
-        this.showSuggestionBox (false);
+        this.setState(()=>({searchSubmitted : true}));
+        this.props.history.push(`/title/${suggestedMovieID}`);
     }
 
     showSuggestionBox = (show) =>{
