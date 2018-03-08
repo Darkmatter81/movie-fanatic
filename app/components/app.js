@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home';
 import SearchBox from './SearchBox';
 import SearchResults from './SearchResults';
+import MovieProfile from './MovieProfile';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 export default class App extends React.Component{
@@ -19,7 +20,7 @@ export default class App extends React.Component{
                         <div style={{marginTop: 30}}>
                             <Switch>
                                 <Route exact path='/' component={Home}/>
-                                <Route path='/title/:id' render={()=><h2>Movie result</h2>}/>
+                                <Route path='/title/:id' component={MovieProfile}/>
                                 <Route path='/search/:title' component={SearchResults}/>  
                                 <Route render={()=><h2>Page not found</h2>}/>
                             </Switch>
