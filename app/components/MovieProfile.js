@@ -41,20 +41,26 @@ class Profile extends React.Component{
         const { movie } = this.props;
         
         return(
-            <div>
+            <div className='' >
                 {/* Movie header */}
-                <div>
-                    <h2>{movie.Title}</h2>
-                    <p>({movie.Year})</p>
-                    <p>{movie.Runtime}</p>
-                    <p>{movie.Genre}</p>
-                    <p>{movie.Released}</p>
+                <div className='row'>
+                    <div className='col-xs-12'>
+                        <h2>{movie.Title}</h2>
+                        <p>({movie.Year})</p>
+                        <p>{movie.Runtime}</p>
+                        <p>{movie.Genre}</p>
+                        <p>{movie.Released}</p>
+                    </div>
                 </div>
 
                 {/* Movie poster and description container */}
-                <div>
-                    <img src={movie.Poster} />
-                    <p>{movie.Plot}</p>
+                <div className='row'>
+                    <div className='col-xs-12 col-md-6'>
+                        <img src={movie.Poster} className='img-fluid' />
+                    </div>
+                    <div className='col-xs-12 col-md-6'>
+                        <p>{movie.Plot}</p>
+                    </div>
                 </div>
 
                 {/* Details */}

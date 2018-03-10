@@ -15,27 +15,33 @@ a:hover{
     text-decoration: none;
 }
 
+input{
+    width:100%;
+}
+/* .container{
+    max-width: 850px;
+} */
 .app-container{
     
-    min-width: 850px;
+    max-width: 850px;
 }
 
 .search-box-wrap{
-    width: 500px;
+    /* width: 500px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto; */
 }
 
 .search-box{
-    min-width: 300px; 
+    min-width: 320px;
     position: relative;
 }
 
-.search-wrap{
-    display:block;
-    width: 100%;
-}
-
+.row-no-padding [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+ }
+  
 .search-wrap input{
     width: 80%;
 }
@@ -99,10 +105,10 @@ a:hover{
 }
 
 .result-container{
-    max-width: 640px;
+    /* max-width: 640px;
     min-height: 500px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto; */
     border: #dddddd 1px solid;
     padding: 20px;
     border-radius: 10px;

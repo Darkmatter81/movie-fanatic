@@ -18,7 +18,7 @@ const ResultsList = (props) =>{
                 <p>No results for "{ title }"</p>
             }
 
-            <table className='results-table'>
+            <table className='table results-table'>
                 <tbody>
                     {results.map(( {imdbID, Year, Poster, Title} )=>{
                         return(
@@ -55,12 +55,14 @@ class SearchResults extends React.Component {
     };
 
     componentDidUpdate(prevProps){
+        console.log('did update')
         if (this.props.location.pathname !== prevProps.location.pathname){
             this.searchForMovies (this.props.match.params.title);
         }
     }
 
     componentDidMount(){
+        console.log('did mount')
         const { title } = this.props.match.params;
         this.searchForMovies( title );
     }
@@ -86,14 +88,16 @@ class SearchResults extends React.Component {
         const { title } = this.props.match.params;
 
         return (
-            <div className='result-container'>
-                {this.state.loading === false &&    
-                    <ResultsList results={searchResults} title={title}/>
-                }
+            <div className='col-xs-12'>
+                <div className='result-container'>
+                    {this.state.loading === false &&    
+                        <ResultsList results={searchResults} title={title}/>
+                    }
 
-                {this.state.loading &&
-                    <Loading/>
-                }
+                    {this.state.loading &&
+                        <Loading/>
+                    }
+                </div>
             </div>
         );
     }
