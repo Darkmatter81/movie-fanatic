@@ -15,15 +15,12 @@ a:hover{
     text-decoration: none;
 }
 
-input{
-    width:100%;
-}
-/* .container{
+
+.app-container{    
     max-width: 850px;
-} */
-.app-container{
-    
-    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
 }
 
 .search-box-wrap{
@@ -104,11 +101,9 @@ input{
     margin: 2px;
 }
 
-.result-container{
-    /* max-width: 640px;
+.result-container, .movie-profile-container{
+    overflow: hidden;
     min-height: 500px;
-    margin-right: auto;
-    margin-left: auto; */
     border: #dddddd 1px solid;
     padding: 20px;
     border-radius: 10px;
@@ -147,12 +142,7 @@ input{
 }
 
 .movie-details-table {
-    margin-top: 20px;
     width:100%;
-}
-
-.movie-ratings-table{
-    margin-top: 20px;
 }
 
 .movie-rating-bar{
@@ -169,3 +159,68 @@ input{
     background-color:rgb(82, 255, 47);
 }
 
+.row-no-padding [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+ }
+
+ .movie-poster{
+     width: 182px;
+     height: 268px; 
+ }
+
+ .movie-plot{
+    width: 100%; 
+    margin-left: -55px;
+ }
+
+
+ .movie-profile-container{
+    font-size: 14px;
+}
+ 
+ .movie-profile-container p{
+     display: inline;
+ }
+
+ .movie-header{
+    background-color: #333333;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    padding: 20px 20px 10px 20px;
+    color: #cccccc;
+}
+
+ .movie-title-year{
+     display:inline-block;
+ }
+
+.movie-title-year h3{
+     display: inline;
+ }
+
+ .movie-title-year p{
+     font-size: 23px;
+     margin-left: 5px;
+ }
+
+ .movie-details{
+     margin-top: 5px;
+ }
+
+ .movie-details p:not(:first-child){
+     margin-left: 10px;
+ }
+
+ .movie-details p{
+     margin-right: 10px;
+ }
+
+ .movie-poster-plot{
+     margin-top: 20px;
+ }
+
+ .movie-poster{
+    margin-bottom: 20px;
+ }

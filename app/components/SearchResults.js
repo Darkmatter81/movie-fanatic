@@ -88,16 +88,14 @@ class SearchResults extends React.Component {
         const { title } = this.props.match.params;
 
         return (
-            <div className='col-xs-12'>
-                <div className='result-container'>
-                    {this.state.loading === false &&    
-                        <ResultsList results={searchResults} title={title}/>
-                    }
+            <div className='result-container'>
+                {this.state.loading === false &&    
+                    <ResultsList results={searchResults} title={title}/>
+                }
 
-                    {this.state.loading &&
-                        <Loading/>
-                    }
-                </div>
+                {this.state.loading &&
+                    <Loading/>
+                }
             </div>
         );
     }

@@ -6,14 +6,13 @@ const MovieRating = (props) =>{
     const { Value:value } = props.rating;
     let ratingValue;
 
-    // are we not dealing with percentage?
-    if (value.indexOf('%') === -1){
-        const [score, total] = value.split('/');
-        
-        ratingValue = parseInt( (score / total) * 100 );
+    // are we dealing with percentage rating?
+    if (value.indexOf('%') !== -1){
+        ratingValue = parseInt( value.split('%')[0] );
     }
     else{
-        ratingValue = parseInt( value.split('%')[0] );
+        const [score, total] = value.split('/');
+        ratingValue = parseInt( (score / total) * 100 );
     }
 
     return(
@@ -22,8 +21,7 @@ const MovieRating = (props) =>{
                 <div className='movie-rating-score-bar'
                      style={{width:`${ratingValue}%`}}>
                 </div>
-            </div>
-            
+            </div>         
         </div>
     );
 }
@@ -41,24 +39,30 @@ class Profile extends React.Component{
         const { movie } = this.props;
         
         return(
-            <div className='' >
+            <div className=''>
                 {/* Movie header */}
-                <div className='row'>
-                    <div className='col-xs-12'>
-                        <h2>{movie.Title}</h2>
-                        <p>({movie.Year})</p>
-                        <p>{movie.Runtime}</p>
-                        <p>{movie.Genre}</p>
-                        <p>{movie.Released}</p>
+                <div className=' movie-header'>
+                    <div className='co1l-12'>
+                        <div className='movie-title-year'>
+                            <h3>{movie.Title}</h3>
+                            <p>({movie.Year})</p>
+                        </div>
+
+                        <div className='movie-details'>
+                            <p>{movie.Runtime}</p> |
+                            <p>{movie.Genre}</p>   |
+                            <p>{movie.Released}</p>
+                        </div>
                     </div>
                 </div>
 
-                {/* Movie poster and description container */}
-                <div className='row'>
-                    <div className='col-xs-12 col-md-6'>
-                        <img src={movie.Poster} className='img-fluid' />
+                {/* Movie poster and description */}
+                <div className='row movie-poster-plot'>
+                    <div className='col-12 col-sm-4 col-md-3 col-lg-3'>
+                        <img src={movie.Poster} className='movie-poster img-fluid mx-auto mx-sm-0 d-block' />
                     </div>
-                    <div className='col-xs-12 col-md-6'>
+
+                    <div className='col-12 col-sm-7 col-md-9 col-lg-9'>
                         <p>{movie.Plot}</p>
                     </div>
                 </div>
@@ -143,7 +147,7 @@ export default class MovieProfile extends React.Component{
         const { movie } = this.state;
         
         return(
-            <div className='result-container'>
+            <div className='movie-profile-container'>
                 {movie !== null &&
                    <Profile movie={movie}/>
                 }
