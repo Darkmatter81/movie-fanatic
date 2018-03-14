@@ -40,11 +40,28 @@ a:hover{
  }
   
 .search-wrap input{
-    width: 80%;
+    width: 70%;
+    border-radius:10px;
+    border:  solid 1px #cccccc;
+    padding: 5px;
+}
+
+
+input:focus, button:focus{
+    outline:none;
 }
 
 .search-wrap button{
     width: 20%;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.search-wrap button:hover{
+    background-color: #bbbbbb; 
 }
 
 .search-suggestion-box{
@@ -101,7 +118,7 @@ a:hover{
     margin: 2px;
 }
 
-.result-container, .movie-profile-container{
+.result-container, #movie-profile-container{
     overflow: hidden;
     min-height: 500px;
     border: #dddddd 1px solid;
@@ -141,8 +158,85 @@ a:hover{
     color: darkblue;
 }
 
+
+#movie-profile-container{
+    font-size: 14px;
+}
+
+#movie-header{
+    background-color: #333333;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    padding: 20px 20px 10px 20px;
+    color: #dddddd;
+}
+
+#movie-title-year{
+     display:inline-block;
+}
+
+#movie-title-year h3{
+     display: inline;
+}
+
+#movie-title-year p{
+    display:inline;
+    font-size: 23px;
+    margin-left: 5px;
+}
+
+#movie-details{
+    margin-top: 5px;
+}
+
+#movie-details p{
+    display:inline;
+}
+
+#movie-details p:not(:first-child){
+    margin-left: 0px;
+}
+
+#movie-details p:not(:last-child):after{
+    content: '   |   ';
+    white-space: pre;
+}
+
+#movie-poster-plot{
+    margin-top: 20px;
+}
+
+#movie-poster{
+    width: 182px;
+    height: 268px; 
+    margin-bottom: 20px;
+}
+
+#movie-plot{
+    margin-bottom: 20px;
+}
+
 .movie-details-table {
     width:100%;
+}
+
+#movie-details-table {
+    margin-bottom: 20px;
+}
+
+#movie-details-table td:nth-child(odd){
+    width: 100px;
+}
+
+#movie-rating-meter{
+    display: flex;
+    margin-top:3px;
+}
+
+#movie-rating-meter p{
+    margin-top:-5px;
+    margin-left:10px;
 }
 
 .movie-rating-bar{
@@ -159,68 +253,23 @@ a:hover{
     background-color:rgb(82, 255, 47);
 }
 
+#movie-ratings-table td:nth-child(odd){
+    min-width:100px;
+    max-width:200px;
+}
+
+.movie-rating-bar{
+    margin-left: 20px;
+}
+
+
+
+
+
+
 .row-no-padding [class*="col-"] {
     padding-left: 0 !important;
     padding-right: 0 !important;
  }
 
- .movie-poster{
-     width: 182px;
-     height: 268px; 
- }
 
- .movie-plot{
-    width: 100%; 
-    margin-left: -55px;
- }
-
-
- .movie-profile-container{
-    font-size: 14px;
-}
- 
- .movie-profile-container p{
-     display: inline;
- }
-
- .movie-header{
-    background-color: #333333;
-    margin-left: -20px;
-    margin-right: -20px;
-    margin-top: -20px;
-    padding: 20px 20px 10px 20px;
-    color: #cccccc;
-}
-
- .movie-title-year{
-     display:inline-block;
- }
-
-.movie-title-year h3{
-     display: inline;
- }
-
- .movie-title-year p{
-     font-size: 23px;
-     margin-left: 5px;
- }
-
- .movie-details{
-     margin-top: 5px;
- }
-
- .movie-details p:not(:first-child){
-     margin-left: 10px;
- }
-
- .movie-details p{
-     margin-right: 10px;
- }
-
- .movie-poster-plot{
-     margin-top: 20px;
- }
-
- .movie-poster{
-    margin-bottom: 20px;
- }

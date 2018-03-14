@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import noPoster from './../filmstrip-icon.png';
+import noPoster from './../assets/filmstrip-icon.png';
 import api from './../utils/api';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import api from './../utils/api';
-import noPosterImg from './../filmstrip-icon.png';
+import noPosterImg from './../assets/filmstrip-icon.png';
 import { withRouter } from 'react-router-dom';
 
 class SearchSuggestionBox extends React.Component {

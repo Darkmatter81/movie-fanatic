@@ -13,14 +13,15 @@ var config = {
         rules: [
             {test: /\.(js)$/, use: 'babel-loader'},
             {test: /\.css$/,  use: ['style-loader', 'css-loader']},
-            {test: /\.(png)$/,  use: "file-loader"},
+            {test: /\.(png|jpg|ico)$/,  loader: "file-loader", options:{name:'[name].[ext]'}},
         ]
     },
     devServer:{
         historyApiFallback: true
     },
     plugins: [new HtmlWebpackPlugin({
-        template: 'app/index.html'
+        template: 'app/index.html',
+        favicon: 'app/assets/favicon.ico'
     })]
 };
 
