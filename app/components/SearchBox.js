@@ -45,7 +45,27 @@ class SearchSuggestionBox extends React.Component {
     }
 }
 
+
 class SearchBox extends React.Component{
+    // Styles to remove/add rounded corners on search field/button
+    // when the suggestions box is showing
+    searchBoxOpenCorner = {
+        borderBottomLeftRadius: 0,
+    }
+    
+    searchBoxClosedCorner = {
+        borderBottomLeftRadius: 5,
+    }
+    
+    searchButtonOpenCorner = {
+        borderBottomRightRadius: 0,
+    }
+    
+    searchButtonClosedCorner = {
+        borderBottomRightRadius: 5,
+    }
+    
+   
     state = {
         suggestedMovies: [],
         searchTitle: '',
@@ -126,9 +146,18 @@ class SearchBox extends React.Component{
                                onFocus={this.onMovieTitleChange}
                                value={this.state.movieTitle} 
                                placeholder='Search movies, TV shows' 
-                               autoFocus/>
+                               autoFocus
+                               style={ showSuggestions 
+                                       ? this.searchBoxOpenCorner
+                                       : this.searchBoxClosedCorner
+                               }/>
                         
-                        <button ref={(node)=>{this.searchButton = node}}>
+                        <button ref={(node)=>{this.searchButton = node}}
+                                style = {
+                                    showSuggestions
+                                    ? this.searchButtonOpenCorner
+                                    : this.searchButtonClosedCorner
+                                }>
                             Search
                         </button>
                     </form>

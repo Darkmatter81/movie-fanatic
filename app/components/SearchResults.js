@@ -88,7 +88,7 @@ class SearchResults extends React.Component {
         const { title } = this.props.match.params;
 
         return (
-            <div className='result-container'>
+            <div className='content'>
                 {this.state.loading === false &&    
                     <ResultsList results={searchResults} title={title}/>
                 }

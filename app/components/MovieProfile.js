@@ -3,30 +3,42 @@ import PropTypes from 'prop-types';
 import api from './../utils/api';
 import Loading from './Loading';
 import noPosterImg from './../assets/filmstrip-poster.jpg';
-
+import NewsFeed from './NewsFeed';
 
 export default class MovieProfile extends React.Component{
     state = {
         loading: false,
+        newsLoading: false,
         error: false,
         movie: null,
+        movieNews: null
     };
 
     componentDidUpdate(prevProps){
         if (this.props.location.pathname !== prevProps.location.pathname){
-            this.fetchMovieTitle (this.props.match.params.id);
+            this.fetchMovieProfileData(this.props.match.params.id);
         }
     }
 
     componentDidMount(){
-        this.fetchMovieTitle(this.props.match.params.id);
+        this.fetchMovieProfileData(this.props.match.params.id);
+    }
+
+    async fetchMovieProfileData(){
+        await this.fetchMovieTitle (this.props.match.params.id);
+
+        // Now fetch related news for this movie
+        if (this.state.movie !== null){
+            this.fetchRelatedMovieNews(this.state.movie.Title);
+        }
     }
 
     async fetchMovieTitle(imdbID){
         this.setState(()=>({
             loading: true,
             error: false,
-            movie: null
+            movie: null,
+            movieNews: null
         }));
 
         const movie = await api.getMovieTitle(imdbID);
@@ -34,17 +46,38 @@ export default class MovieProfile extends React.Component{
         this.setState(()=>({
             loading: false,
             error: movie === null,
-            movie
+            movie,
+        }));
+    }
+    
+    async fetchRelatedMovieNews(topic){
+        this.setState(()=>({newsLoading: true, movieNews: null}));
+
+        let news = await api.getMovieNews(topic);
+
+        this.setState(()=>({
+            newsLoading: false,
+            movieNews: news
         }));
     }
 
     render(){
-        const { movie } = this.state;
+        const { movie, movieNews } = this.state;
         
         return(
-            <div id='movie-profile-container'>
+            <div className='content' id='movie-profile-container'>
+                {/* Movie profile */}
                 {movie !== null &&
-                   <Profile movie={movie}/>
+                    <Profile movie={movie}/>
+                }
+
+                {/* Related movie news */}
+                {movieNews !== null && movieNews.length > 0 &&
+                    <div>
+                        <hr/>
+                        <NewsFeed news={movieNews} 
+                            heading={`News related to "${movie.Title}"`}/>
+                    </div>
                 }
 
                 {this.state.loading &&
@@ -59,40 +92,14 @@ export default class MovieProfile extends React.Component{
     }
 }
 
-const MovieRating = (props) =>{
-    const { Value:value } = props.rating;
-    let ratingValue;
-
-    // are we dealing with percentage rating?
-    if (value.indexOf('%') !== -1){
-        ratingValue = parseInt( value.split('%')[0] );
-    }
-    else{
-        const [score, total] = value.split('/');
-        ratingValue = parseInt( (score / total) * 100 );
-    }
-
-    return(
-        <div id='movie-rating-meter'>
-            <div className='movie-rating-bar'>
-                <div className='movie-rating-score-bar'
-                     style={{width:`${ratingValue}%`}}>
-                </div>
-            </div>
-            <p>{ratingValue}%</p>         
-        </div>
-    );
-}
-
-MovieRating.propTypes = {
-    rating: PropTypes.object.isRequired
-};
-
 class Profile extends React.Component{
     static propTypes = {
         movie:PropTypes.object.isRequired
     };
 
+    async componentDidMount(){
+        
+    }
     render(){
         const { movie } = this.props;
         
@@ -175,3 +182,32 @@ class Profile extends React.Component{
         );
     }
 }
+
+const MovieRating = (props) =>{
+    const { Value:value } = props.rating;
+    let ratingValue;
+
+    // are we dealing with percentage rating?
+    if (value.indexOf('%') !== -1){
+        ratingValue = parseInt( value.split('%')[0] );
+    }
+    else{
+        const [score, total] = value.split('/');
+        ratingValue = parseInt( (score / total) * 100 );
+    }
+
+    return(
+        <div id='movie-rating-meter'>
+            <div className='movie-rating-bar'>
+                <div className='movie-rating-score-bar'
+                     style={{width:`${ratingValue}%`}}>
+                </div>
+            </div>
+            <p>{ratingValue}%</p>         
+        </div>
+    );
+}
+
+MovieRating.propTypes = {
+    rating: PropTypes.object.isRequired
+};

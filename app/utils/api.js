@@ -3,6 +3,9 @@ const omdbApiRoot = 'https://www.omdbapi.com/?apikey=e0a26407';
 const movieSearchUrl = omdbApiRoot + '&s=';
 const movieTitleUrl = omdbApiRoot + '&plot=full&i=';
 
+const newsapiRoot = 'https://newsapi.org/v2/everything?apiKey=3af66352aab442f195447370226158c6';
+const newsTopicSearchUrl = newsapiRoot + '&pageSize=8&sortBy=publishedAt&language=en&q=';
+
 function handlError(error){
     console.warn(error);
 }
@@ -45,7 +48,6 @@ async function getMovieTitle(imdbID){
         
         // Handle movie not found by api,
         if (movie.hasOwnProperty('Title') === false){
-            console.log('not found');
             movie = null;
         }
     }
@@ -56,11 +58,28 @@ async function getMovieTitle(imdbID){
     return movie;
 }
 
+async function getMovieNews(topic){
+    let articles = null;
+    try{
+        const response = await fetch(newsTopicSearchUrl + topic);
+        const news = await response.json();
+        articles = news.articles;
+    }
+    catch (error){
+        handleError(error);
+    }
+
+    return articles;
+}
+
 export default {
     searchMovies(title){
         return searchMovies(title);
     },
     getMovieTitle(imdbID){
         return getMovieTitle(imdbID);
+    },
+    getMovieNews(topic){
+        return getMovieNews(topic);
     }
 };

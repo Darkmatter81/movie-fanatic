@@ -40,8 +40,11 @@ a:hover{
  }
   
 .search-wrap input{
-    width: 70%;
-    border-radius:10px;
+    width: 80%;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
     border:  solid 1px #cccccc;
     padding: 5px;
 }
@@ -55,9 +58,10 @@ input:focus, button:focus{
     width: 20%;
     padding: 5px;
     border-radius: 5px;
-    border-style: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #cccccc;
     cursor: pointer;
-    margin-left: 6px;
 }
 
 .search-wrap button:hover{
@@ -70,8 +74,9 @@ input:focus, button:focus{
     z-index: 9999;
     width: 100%;
     overflow: auto;
-    border:true;
+    
     border: solid 1px #cccccc;
+    border-top: none;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -118,12 +123,14 @@ input:focus, button:focus{
     margin: 2px;
 }
 
-.result-container, #movie-profile-container{
+.content {
     overflow: hidden;
     min-height: 500px;
     border: #dddddd 1px solid;
     padding: 20px;
     border-radius: 10px;
+    background-image: url('./assets/movie-collage.jpg');
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .results-table{
@@ -253,6 +260,14 @@ input:focus, button:focus{
     background-color:rgb(82, 255, 47);
 }
 
+#related-news{
+    margin-top: 50px;
+}
+
+#movie-ratings-table{
+    margin-bottom: 20px;
+}
+
 #movie-ratings-table td:nth-child(odd){
     min-width:100px;
     max-width:200px;
@@ -262,14 +277,53 @@ input:focus, button:focus{
     margin-left: 20px;
 }
 
+#related-news-wrap{
+    margin-top: 40px;
+}
 
+#related-news-heading{
+    margin-bottom: 20px;
+}
 
+#news-feed-container{}
 
+#news-feed-table tr{
+    display:block;
+    padding-bottom: 20px;
+}
+
+#news-feed-table td{
+    border-top: none;
+    padding: 0px;
+}
+
+#news-feed-table img{
+    width: 100px;
+    height: 60px;
+}
+
+.news-img-column{
+    padding: 0px;
+    width: 130px;
+}
+
+.news-snippet p{
+    margin-bottom: 10px;
+}
+
+.read-more-link{
+    margin-top:25px;
+}
+
+.title-link{
+    color: #212529;
+}
 
 
 .row-no-padding [class*="col-"] {
     padding-left: 0 !important;
     padding-right: 0 !important;
  }
+
 
 
