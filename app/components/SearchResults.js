@@ -11,14 +11,14 @@ const ResultsList = (props) =>{
     return(       
         <div>
             {results.length > 0 &&
-                <p>Results for "{ title }"</p>
+                <h4>Results for "{ title }"</h4>
             }
 
             {results.length == 0 &&
                 <p>No results for "{ title }"</p>
             }
 
-            <table className='table results-table'>
+            <table className='table' id='results-table'>
                 <tbody>
                     {results.map(( {imdbID, Year, Poster, Title} )=>{
                         return(
@@ -55,14 +55,12 @@ class SearchResults extends React.Component {
     };
 
     componentDidUpdate(prevProps){
-        console.log('did update')
         if (this.props.location.pathname !== prevProps.location.pathname){
             this.searchForMovies (this.props.match.params.title);
         }
     }
 
     componentDidMount(){
-        console.log('did mount')
         const { title } = this.props.match.params;
         this.searchForMovies( title );
     }

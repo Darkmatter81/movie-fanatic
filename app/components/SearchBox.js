@@ -34,7 +34,7 @@ class SearchSuggestionBox extends React.Component {
                             )
                         })}
                         <li>
-                            <div className = 'see-all-results' onMouseUp={onClickSearchAll}>
+                            <div id = 'see-all-results' onMouseUp={onClickSearchAll}>
                                 See all results for <em>"{searchTitle}"</em>
                             </div>
                         </li>
@@ -153,6 +153,7 @@ class SearchBox extends React.Component{
                                }/>
                         
                         <button ref={(node)=>{this.searchButton = node}}
+                                disabled={this.state.searchTitle === ''}
                                 style = {
                                     showSuggestions
                                     ? this.searchButtonOpenCorner

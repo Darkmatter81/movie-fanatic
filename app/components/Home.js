@@ -29,7 +29,7 @@ class Home extends React.Component {
             <div className='content'>
                 { newsArticles !== null && newsArticles.length > 0 &&
                     <div>
-                        <h4>Movie and enterntainment news</h4>
+                        <h4>Movie and entertainment news</h4>
                         <div id='related-news-wrap'>
                             <NewsFeed news={ newsArticles }/>
                        </div>
