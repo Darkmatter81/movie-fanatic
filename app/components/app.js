@@ -20,7 +20,6 @@ export default class App extends React.Component{
                                     <img id='site-logo' src={logo}/>
                                 </a>
                             </div>
-                            {/* </div> offset-lg-2 offset-md-2'> */}
                             <div className='col-9 offset-1 offset-sm-0 col-sm-10 col-md-10 col-lg-10' >
                                 <SearchBox />     
                             </div>               

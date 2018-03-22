@@ -55,12 +55,10 @@ button:focus{
 
 input:focus{
     outline:none;
-    /* border-radius: 2px; */
 }
 
 .search-box button{
     width: 20%;
-
     padding: 7px;
     border-radius: 5px;
     border-top-left-radius: 0;
@@ -79,7 +77,6 @@ input:focus{
     z-index: 9999;
     width: 100%;
     overflow: auto;
-    
     border: solid 1px #cccccc;
     border-top: none;
     border-bottom-right-radius: 10px;
@@ -145,7 +142,7 @@ input:focus{
 }
 
 #results-table tr:nth-child(odd) {
-    background-color:#eeeeee;
+    background-color:#fefefe;
 }
 
 #results-table tr{
